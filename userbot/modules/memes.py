@@ -347,7 +347,8 @@ FACEREACTS = [
 ]
 
 RUNSREACTS = [
-    "`Runs to Thanos`",
+    "`Shani tujhpr bhari h kuttey ne teri maari h`",
+    "`Pani Kaam h matkey me teri gand mardunga jhatkey mey xD`",
     "`Runs far, far away from earth`",
     "`Running faster than supercomputer, cuzwhynot`",
     "`Runs to SunnyLeone`",
