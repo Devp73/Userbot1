@@ -17,3 +17,6 @@
 <p align="center">&nbsp;</p>
 <h2 align="center">License</h2>
 <p align="center"><a href="https://github.com/Devp73/Userbot1/blob/sql-extended/LICENSE">Raphielscape Public License</a> - Version 1.c, June 2019</p>
+<p align="center">&nbsp;</p>
+<h1 align="center">Generating string</h1>
+<p align="center">For generating<a href="https://t.me/devkeks/27">string session</a>you can use this commands</p>
