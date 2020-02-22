@@ -24,8 +24,8 @@ async def repcf(event):
         msg = reply.text
         text_rep = session.think_thought((session_id, msg))
         await event.edit("**Lydia says**: {0}".format(text_rep))
-    except Exception as e:
-        await event.edit(str(e))
+    except:
+        await event.edit("Not enabled")
 
 @register(outgoing=True, pattern="^.addcf$")
 async def addcf(event):
