@@ -24,14 +24,14 @@ async def repcf(event):
         msg = reply.text
         text_rep = session.think_thought((session_id, msg))
         await event.edit("**Lydia says**: {0}".format(text_rep))
-    except KeyError:
-        await event.edit("Not enabled")
+    except:
+        return
 
 @register(outgoing=True, pattern="^.addcf$")
 async def addcf(event):
     if event.fwd_from:
         return
-    await event.edit("Running on SQL mode for now...")
+    await event.edit("Running on Non-SQL mode for now...")
     await asyncio.sleep(4)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
@@ -48,7 +48,7 @@ async def addcf(event):
 async def remcf(event):
     if event.fwd_from:
         return
-    await event.edit("Running on SQL mode for now...")
+    await event.edit("Running on Non-SQL mode for now...")
     await asyncio.sleep(4)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
