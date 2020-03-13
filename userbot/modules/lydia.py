@@ -3,7 +3,7 @@
 from coffeehouse.lydia import LydiaAI
 from coffeehouse.api import API
 import asyncio
-from userbot import LYDIA_API_KEY
+from userbot import LYDIA_API_KEY, CMD_HELP
 from userbot.events import register
 from telethon import events
 
@@ -77,3 +77,17 @@ async def user(event):
             await event.reply(text_rep)
     except (KeyError, TypeError):
         return
+
+CMD_HELP.update({
+    "lydia":
+    ".lstcf <username/reply>\
+\nUsage: Outputs List Of Currently added Users in AI Auto-Chat.\
+\n\n.delcf <username/reply>\
+    ".addcf <username/reply>\
+\nUsage: add's lydia auto chat request in the chat.\
+\n\n.remcf <username/reply>\
+\nUsage: remove's lydia auto chat request in the chat.\
+\n\n.enacf <username/reply>\
+\n\n.repcf <username/reply>\
+\nUsage: starts lydia repling to perticular person in the chat."
+})
