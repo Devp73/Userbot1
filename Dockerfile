@@ -48,13 +48,14 @@ RUN apk add --no-cache=true --update \
     sqlite \
     ffmpeg \
     sqlite-dev \
-    sudo \
+    libjpeg-turbo-dev \
     chromium \
     chromium-chromedriver \
     zlib-dev \
     jpeg 
-    
-  
+    # 
+
+RUN curl https://cli-assets.heroku.com/install.sh 
 
 
 RUN python3 -m ensurepip \
