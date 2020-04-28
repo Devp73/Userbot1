@@ -83,11 +83,12 @@ CMD_HELP.update({
     ".lstcf <username/reply>\
 \nUsage: Outputs List Of Currently added Users in AI Auto-Chat.\
 \n\n.delcf <username/reply>\
-    ".addcf <username/reply>\
+\n\n.addcf <username/reply>\
 \nUsage: add's lydia auto chat request in the chat.\
 \n\n.remcf <username/reply>\
 \nUsage: remove's lydia auto chat request in the chat.\
 \n\n.enacf <username/reply>\
 \n\n.repcf <username/reply>\
-\nUsage: starts lydia repling to perticular person in the chat."
+\nUsage: starts lydia repling to perticular person in the chat.
+\n Note:  get your value from https://coffeehouse.intellivoid.info/dashboard."
 })
