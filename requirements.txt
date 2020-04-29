@@ -62,4 +62,3 @@ pyfiglet
 jotquote
 csvfaker
 pymongo[srv]
-
