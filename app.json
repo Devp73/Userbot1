@@ -41,7 +41,7 @@
       "value": "0"
     },
     "MONGO_DB_URI": {
-      "description": "Your MongoDB Atlas URL.",
+      "description": "Your MongoDB Atlas URL, Get your guide from https://telegra.ph/Mongo-DB-12-24.",
       "value": "0"
     },
     "GENIUS": {
