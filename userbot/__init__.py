@@ -10,7 +10,8 @@ import os
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
-
+from pymongo import MongoClient
+from redis import StrictRedis
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from dotenv import load_dotenv
@@ -33,8 +34,8 @@ else:
                 level=INFO)
 LOGS = getLogger(__name__)
 
-if version_info[0] < 3 or version_info[1] < 6:
-    LOGS.info("You MUST have a python version of at least 3.6."
+if version_info[0] < 3 or version_info[1] < 8:
+    LOGS.info("You MUST have a python version of at least 3.8."
               "Multiple features depend on this. Bot quitting.")
     quit(1)
 
@@ -53,6 +54,10 @@ if CONFIG_CHECK:
 API_KEY = os.environ.get("API_KEY", None)
 API_HASH = os.environ.get("API_HASH", None)
 
+# Photo Chat - Get this value from http://antiddos.systems
+API_TOKEN = os.environ.get("API_TOKEN", None)
+API_URL = os.environ.get("API_URL", "http://antiddos.systems")    
+    
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
@@ -66,11 +71,28 @@ LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
+# Heroku Credentials for updater.
+HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
+HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+
+# Github Credentials for updater and Gitupload.
+GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
+GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
+
+# Custom (forked) repo URL for updater.
+UPSTREAM_REPO_URL = os.environ.get(
+    "UPSTREAM_REPO_URL",
+    "https://github.com/Devp73/Userbot1.git")
+
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
 # SQL Database URI
 DB_URI = os.environ.get("DATABASE_URL", None)
+
+# For MONGO based DataBase
+MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
 
 # OCR API key
 OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
@@ -89,6 +111,12 @@ WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", None)
 # Lydia API
 LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
 
+# set blacklist_chats where you do not want userbot's features
+UB_BLACK_LIST_CHAT = os.environ.get("UB_BLACK_LIST_CHAT", "")
+
+# Telegraph 
+TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", None)
+    
 # Anti Spambot Config
 ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
 ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
@@ -130,6 +158,39 @@ G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
 GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY",
                                          "./downloads")
+
+# Genius lyrics get this value from https://genius.com/developers both has same values
+GENIUS_API_TOKEN = os.environ.get("GENIUS", None)
+# Genius lyrics get this value from https://genius.com/developers both has same values
+GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
+
+"""
+# Init Mongo
+MONGOCLIENT = MongoClient(MONGO_DB_URI, 27017, serverSelectionTimeoutMS=1)
+MONGO = MONGOCLIENT.userbot
+
+
+def is_mongo_alive():
+    try:
+        MONGOCLIENT.server_info()
+    except BaseException:
+        return False
+    return True
+
+
+# Init Redis
+# Redis will be hosted inside the docker container that hosts the bot
+# We need redis for just caching, so we just leave it to non-persistent
+REDIS = StrictRedis(host='localhost', port=6379, db=0)
+
+
+def is_redis_alive():
+    try:
+        REDIS.ping()
+        return True
+    except BaseException:
+        return False
+"""
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
@@ -195,6 +256,7 @@ COUNT_MSG = 0
 USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
+ENABLE_KILLME = True
 CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
