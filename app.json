@@ -11,7 +11,7 @@
   ],
   "repository": "https://github.com/Devp73/Userbot1",
   "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-07-24",
-  "success_url": "https://t.me/PaperplaneExtended",
+  "success_url": "https://t.me/dev_userbot1",
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -22,9 +22,56 @@
       "description": "Get this value from my.telegram.org.",
       "required": true
     },
+    "API_TOKEN": {
+      "description": "Get this value from http://antiddos.systems! Please do not steal",
+      "value": "",
+      "required": false
+    },
+    "API_URL": {
+      "description": "The value is http://antiddos.systems!",
+      "value": "http://antiddos.systems",
+      "required": false
+    },
     "STRING_SESSION": {
       "description": "Get this value by running [python3 string_session.py] in Termux or local system.",
       "required": true
+    },
+    "GENIUS_API_TOKEN": {
+      "description": "Get this value from https://genius.com/developers.",
+      "value": "0"
+    },
+    "MONGO_DB_URI": {
+      "description": "Your MongoDB Atlas URL.",
+      "value": "0"
+    },
+    "GENIUS": {
+      "description": "Get this value from https://genius.com/developers., basically same as GENIUS_API_TOKEN.",
+      "value": "0"
+    },
+    "HEROKU_MEMEZ": {
+      "description": "This should be True if the userbot is running on a Heroku Dyno.",
+      "value": "True",
+      "required": true
+    },
+    "HEROKU_API_KEY": {
+      "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
+      "value": ""
+    },
+    "HEROKU_APP_NAME": {
+      "description": "Add the Heroku app name here. It helps with userbot updates.",
+      "required": false
+    },
+    "GITHUB_ACCESS_TOKEN": {
+      "description": "Your GITHUB_ACCESS_TOKEN, get it from 'https://github.com/settings/tokens'",
+      "value": ""
+    },
+    "GIT_REPO_NAME": {
+      "description": "Add the GIT_REPO_NAME here. It helps with commit on GitHub.",
+      "required": false
+    },
+    "UPSTREAM_REPO_URL": {
+      "description": "In case you maintain a fork, add your repo URL here.",
+      "required": false
     },
     "COUNTRY": {
       "description": "Set your Country to be used in the .time and .date commands.",
@@ -89,6 +136,10 @@
       "description": "Download location for many modules (GDrive, .download etc..)",
       "value": "./downloads/"
     },
+    "TELEGRAPH_SHORT_NAME": {
+      "description": "add your desired TELEGRAPH_SHORT_NAME.",
+      "value": "@Mayur_Karaniya"
+    },
     "CLEAN_WELCOME": {
       "description": "When a new person joins, the old welcome message is deleted.",
       "value": "True"
@@ -119,7 +170,7 @@
     },
     "DEFAULT_BIO": {
       "description": "Default profile bio.",
-      "value": "[PM = Report Spam] I ❤ ️@PaperplaneExtended",
+      "value": "[PM = Report Spam] I ❤ ️@OpenUserBot",
       "required": false
     },
     "ALIVE_NAME": {
@@ -134,12 +185,17 @@
       "description": "Enter the Google Drive authentication data, as a JSON structure.",
       "required": false
     },
-    "WEATHER_DEFCITY": {
-      "description": "Set the default city for the userbot's weather module.",
+    "UB_BLACK_LIST_CHAT": {
+      "description": "haha",
+      "value": "-1001376711460 -1001232530981 -1001460242671 -1001255383765 -1001476589953 -1001298140471 -1001089118458 -1001224245343 -1001287976326 -1001377256951 -1001329042156 -1001202504432 -1001148103952 -1001063463715 -1001455478060 -1001251236870 -1001462536556 -1001120290128 -1001485556805 -1001220993104 -1001109500936 -1001305313195 -1001329980174",
       "required": false
     },
-		    "LYDIA_API_KEY": {
+    "LYDIA_API_KEY": {
       "description": "This Module Needs CoffeeHouse API to work. so Join https://telegram.dog/IntellivoidDev and send #activateapi and follow instructions.",
+      "required": false
+    },
+    "WEATHER_DEFCITY": {
+      "description": "Set the default city for the userbot's weather module.",
       "required": false
     },
     "LOGSPAMMER": {
@@ -151,8 +207,24 @@
     {
       "plan": "heroku-postgresql",
       "options": {
-        "version": "9.5"
+        "version": "12"
       }
     }
-  ]
+  ],"buildpacks": [{
+    "url": "https://github.com/heroku/heroku-buildpack-python.git"
+  }, {
+    "url": "https://github.com/heroku/heroku-buildpack-redis"
+  }, {
+    "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+  }, {
+    "url": "https://github.com/HasibulKabir/heroku-buildpack-rarlab"
+  },{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  }, {
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  }, {
+    "url": "https://github.com/amivin/aria2-heroku"
+  }, {
+    "url": "https://github.com/stevo550/buildpack-slug-cleaner"
+  }]
 }
