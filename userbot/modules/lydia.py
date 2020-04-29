@@ -89,6 +89,6 @@ CMD_HELP.update({
 \nUsage: remove's lydia auto chat request in the chat.\
 \n\n.enacf <username/reply>\
 \n\n.repcf <username/reply>\
-\nUsage: starts lydia repling to perticular person in the chat.
+\nUsage: starts lydia replying to particular person in the chat. \
 \n Note:  get your value from https://coffeehouse.intellivoid.info/dashboard."
 })
