@@ -76,7 +76,6 @@ RUN python3 -m ensurepip \
 
 RUN git clone https://github.com/Devp73/Userbot1 /root/userbot
 RUN mkdir /root/userbot/bin
-WORKDIR /root/userbot/
 ENV PATH="/root/userbot/bin:$PATH"
 WORKDIR /root/userbot/
 #
