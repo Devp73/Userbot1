@@ -22,31 +22,9 @@
       "description": "Get this value from my.telegram.org.",
       "required": true
     },
-    "API_TOKEN": {
-      "description": "Get this value from http://antiddos.systems! Please do not steal",
-      "value": "",
-      "required": false
-    },
-    "API_URL": {
-      "description": "The value is http://antiddos.systems!",
-      "value": "http://antiddos.systems",
-      "required": false
-    },
     "STRING_SESSION": {
       "description": "Get this value by running [python3 string_session.py] in Termux or local system.",
       "required": true
-    },
-    "GENIUS_API_TOKEN": {
-      "description": "Get this value from https://genius.com/developers.",
-      "value": "0"
-    },
-    "MONGO_DB_URI": {
-      "description": "Your MongoDB Atlas URL, Get your guide from https://telegra.ph/Mongo-DB-12-24.",
-      "value": "0"
-    },
-    "GENIUS": {
-      "description": "Get this value from https://genius.com/developers., basically same as GENIUS_API_TOKEN.",
-      "value": "0"
     },
     "HEROKU_MEMEZ": {
       "description": "This should be True if the userbot is running on a Heroku Dyno.",
@@ -136,10 +114,6 @@
       "description": "Download location for many modules (GDrive, .download etc..)",
       "value": "./downloads/"
     },
-    "TELEGRAPH_SHORT_NAME": {
-      "description": "add your desired TELEGRAPH_SHORT_NAME.",
-      "value": "@Mayur_Karaniya"
-    },
     "CLEAN_WELCOME": {
       "description": "When a new person joins, the old welcome message is deleted.",
       "value": "True"
@@ -170,11 +144,10 @@
     },
     "DEFAULT_BIO": {
       "description": "Default profile bio.",
-      "value": "[PM = Report Spam] I ❤ ️@OpenUserBot",
       "required": false
     },
     "ALIVE_NAME": {
-      "description": "Name to show in .alive message",
+      "description": "Name to show in .alive message, put username to mention yourself",
       "required": false
     },
     "G_DRIVE_CLIENT_SECRET": {
@@ -183,11 +156,6 @@
     },
     "G_DRIVE_AUTH_TOKEN_DATA": {
       "description": "Enter the Google Drive authentication data, as a JSON structure.",
-      "required": false
-    },
-    "UB_BLACK_LIST_CHAT": {
-      "description": "haha",
-      "value": "-1001376711460 -1001232530981 -1001460242671 -1001255383765 -1001476589953 -1001298140471 -1001089118458 -1001224245343 -1001287976326 -1001377256951 -1001329042156 -1001202504432 -1001148103952 -1001063463715 -1001455478060 -1001251236870 -1001462536556 -1001120290128 -1001485556805 -1001220993104 -1001109500936 -1001305313195 -1001329980174",
       "required": false
     },
     "LYDIA_API_KEY": {
@@ -212,8 +180,6 @@
     }
   ],"buildpacks": [{
     "url": "https://github.com/heroku/heroku-buildpack-python.git"
-  }, {
-    "url": "https://github.com/heroku/heroku-buildpack-redis"
   }, {
     "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
   }, {
