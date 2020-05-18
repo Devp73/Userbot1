@@ -50,8 +50,14 @@
       "required": false
     },
     "UPSTREAM_REPO_URL": {
-      "description": "In case you maintain a fork, add your repo URL here.",
+      "description": "reo URL you want heroku to get updates from",
       "value": "https://github.com/Devp73/Userbot1",
+      "required": false
+    },
+
+    "GIT_URL": {
+      "description": "In case you maintain a fork, add your repo URL here.",
+      "value": "",
       "required": false
     },
     "COUNTRY": {

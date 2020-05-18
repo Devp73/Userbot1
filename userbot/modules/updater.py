@@ -16,7 +16,7 @@ import sys
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from userbot import CMD_HELP, bot, HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL
+from userbot import CMD_HELP, bot, HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL, GIT_URL
 from userbot.events import register
 
 requirements_path = path.join(
@@ -170,6 +170,43 @@ async def upstream(ups):
             return
         await ups.edit('`Successfully Updated!\n'
                        'Restarting, please wait...`')
+
+        
+    if conf == "git":
+        ups_rem.fetch(ac_br)
+        repo.git.reset("--hard", "FETCH_HEAD")
+        
+        if "git" in repo.remotes:
+            remote = repo.remote("git")
+            remote.set_url(GIT_URL)
+        else:
+            remote = repo.create_remote("git", GIT_URL)
+        try:
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
+        except GitCommandError as error:
+            await ups.edit(f'{txt}\n`Here is the error log:\n{error}`')
+            repo.__del__()
+            return
+        await ups.edit('`Successfully !')
+
+
+    if conf == "git":
+        ups_rem.fetch(ac_br)
+        repo.git.reset("--hard", "FETCH_HEAD")
+        
+        if "git" in repo.remotes:
+            remote = repo.remote("git")
+            remote.set_url(GIT_URL)
+        else:
+            remote = repo.create_remote("git", GIT_URL)
+        try:
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
+        except GitCommandError as error:
+            await ups.edit(f'{txt}\n`Here is the error log:\n{error}`')
+            repo.__del__()
+            return
+        await ups.edit('`Successfully Updated!')
+
     else:
         # Classic Updater, pretty straightforward.
         try:
