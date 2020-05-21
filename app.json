@@ -54,6 +54,11 @@
       "value": "https://github.com/Devp73/Userbot1",
       "required": false
     },
+    "GIT__URL": {
+      "description": "Your repo(forked) visit https://t.me/devkeks/39 to see what to add",
+      "value": "",
+      "required": false
+    },
     "COUNTRY": {
       "description": "Set your Country to be used in the .time and .date commands.",
       "required": false

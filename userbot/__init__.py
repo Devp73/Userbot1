@@ -74,10 +74,13 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
 GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 
-# Custom (forked) repo URL for updater.
+# Main Repo you want to pull updates from.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
     "https://github.com/Devp73/Userbot1.git")
+
+# Custom(forked) Repo URL to push updates to.
+GIT_URL = os.environ.get("GIT_URL", None)
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))

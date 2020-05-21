@@ -16,7 +16,7 @@ import sys
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from userbot import CMD_HELP, bot, HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL
+from userbot import CMD_HELP, bot, HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL, GIT_URL
 from userbot.events import register
 
 requirements_path = path.join(
@@ -65,7 +65,7 @@ async def upstream(ups):
         repo.__del__()
         return
     except InvalidGitRepositoryError as error:
-        if conf != "now":
+        if conf != "now" and conf != "git":
             await ups.edit(
                 f"`Unfortunately, the directory {error} does not seem to be a git repository.\
             \nBut we can fix that by force updating the userbot using .update now.`"
@@ -105,7 +105,7 @@ async def upstream(ups):
         repo.__del__()
         return
 
-    if conf != "now" and not force_update:
+    if conf != "now" and conf != "git" and not force_update:
         changelog_str = f'**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`'
         if len(changelog_str) > 4096:
             await ups.edit("`Changelog is too big, view the file to see it.`")
@@ -128,8 +128,28 @@ async def upstream(ups):
             '`Force-Syncing to latest stable userbot code, please wait...`')
     else:
         await ups.edit('`Updating userbot, please wait....`')
+
+    if conf == "git":
+        ups_rem.fetch(ac_br)
+        repo.git.reset("--hard", "FETCH_HEAD")
+
+        if "git" in repo.remotes:
+            remote = repo.remote("git")
+            remote.set_url(GIT_URL)
+        else:
+            remote = repo.create_remote("git", GIT_URL)
+        try:
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
+        except GitCommandError as error:
+            await ups.edit(f'{txt}\n`Here is the error log:\n{error}`')
+            repo.__del__()
+            return
+        await ups.edit('`Successfully Pushed.')
+
+
+
     # We're in a Heroku Dyno, handle it's memez.
-    if HEROKU_API_KEY is not None:
+    if conf == "now" and HEROKU_API_KEY is not None:
         import heroku3
         heroku = heroku3.from_key(HEROKU_API_KEY)
         heroku_app = None
@@ -190,5 +210,7 @@ CMD_HELP.update({
     ".update\
 \nUsage: Checks if the main userbot repository has any updates and shows a changelog if so.\
 \n\n.update now\
-\nUsage: Updates your userbot, if there are any updates in the main userbot repository."
+\nUsage: Updates your userbot, if there are any updates in the main userbot repository.\
+\n\n.update git\
+\nUsage: Updates your git repo(forked), if there are any in dev's repo"
 })
