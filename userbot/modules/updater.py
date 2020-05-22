@@ -173,7 +173,8 @@ async def upstream(ups):
         await ups.edit('`[HEROKU MEMEZ]\
                         \nUserbot dyno build in progress, please wait for it to complete.`'
                        )
-        ups_rem.fetch(ac_br)
+        git_rem = repo.remote("git")
+        git_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
             "https://", "https://api:" + HEROKU_API_KEY + "@")
